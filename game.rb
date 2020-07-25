@@ -66,28 +66,28 @@ class Game
     show_guessed_letters
     puts "You lost. Secret word: #{@secret_word}"
   end
-end
 
-def play
-  game = Game.new(Game.random_word)
+  def play
+    puts @secret_word
+
+    while @try < 9
+      puts "-(Tries left: #{9 - @try})"; puts
+      
+      show_missed_letters
+      show_guessed_letters
   
-  puts game.secret_word
-
-  while game.try < 9
-    puts "-(Tries left: #{9 - game.try})"; puts
-    
-    game.show_missed_letters
-    game.show_guessed_letters
-
-    guess = game.get_guess
-
-    game.check_if_include(guess)
-
-    return game.win_message if game.won?
-    return game.lose_message if game.lost?
-
-    puts
+      guess = get_guess
+  
+      check_if_include(guess)
+  
+      return win_message if won?
+      return lose_message if lost?
+  
+      puts
+    end
   end
 end
 
-play
+game = Game.new(Game.random_word)
+
+game.play
