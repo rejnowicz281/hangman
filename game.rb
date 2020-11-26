@@ -2,6 +2,7 @@ class Hangman
   attr_reader :saves
   
   def initialize(incorrect_guesses = 8, secret_word = random_word)
+      Dir.mkdir("saves") unless Dir.exists?("saves")
       @secret_word = secret_word
       @incorrect_guesses = incorrect_guesses
       @correct_letters = Array.new(secret_word.length, "_")
