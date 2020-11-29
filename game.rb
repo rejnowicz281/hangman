@@ -43,6 +43,10 @@ class Hangman
       end 
   end 
 
+  def time_of_save
+    @time_of_save.to_s
+  end 
+
   private
   def random_word
       dictionary = File.read("5desk.txt").split
@@ -88,10 +92,6 @@ class Hangman
         @ask_to_save = false
       end 
   end  
-
-  def time_of_save
-    @time_of_save
-  end 
 
   def secret_word 
     @secret_word
